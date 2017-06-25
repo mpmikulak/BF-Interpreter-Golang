@@ -13,6 +13,7 @@ import (
 // of the sourcecode file.  Returned is the whole file as a slice of bytes.
 func Compile(s string) ([]byte, error) {
 	f, err := os.Open(s)
+	defer f.Close()
 	if err != nil {
 		return nil, err
 	}
@@ -28,15 +29,13 @@ func Compile(s string) ([]byte, error) {
 
 // Message takes a string and prints it with a custom formatted timestamp
 func Message(s string) {
-	fmt.Printf("%v:%v:%v-%s\n", time.Now().Hour(),
-		time.Now().Minute(), time.Now().Second(), s)
+	fmt.Printf("%v:%v:%v.%v-%s\n", time.Now().Hour(),
+		time.Now().Minute(), time.Now().Second(), time.Now().Nanosecond(), s)
 }
 
 // Check performs basic bracket counting and mismatch verification
 func Check(s []byte) bool {
-	bracket := 0
-	open := 0
-	close := 0
+	var bracket, open, close int
 	for _, v := range s {
 		switch v {
 		case 91:
