@@ -1,10 +1,14 @@
 # Brainfuck interpreter in Golang
-A brainfuck interpreter written in golang. Currently all basic features work except adding user input and the only argument the 
-executable accepts is the path of the source code. The program allways checks for missing and mismatched brackets.
+A brainfuck interpreter written in golang. Currently all basic features work.
+The source code file is interpreted by using the -f flag and the -v flag provides
+some verbose output. Brackets are always checked for errors.
 
-Future features will include:
-- Verbose mode
-- Muliti-file input
+Future features will include, in order:
+- Verbose mode (in-progress)
+- Benchmarking
+- Better error handling
 - Better debugger
+- Multi-file input
 
-The program will reach 1.0 status when all basic features are working and verified reasonably free of bugs.
+The program will be considered 1.0 status when all basic features are working
+and verified reasonably free of bugs.
