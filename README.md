@@ -9,8 +9,8 @@ New features include:
 - Better error handling
 
 Future features will include, in order:
-- Better debugger
 - Multi-file input
+- Better debugger
 
-The program will be considered 1.0 status when all basic features are working
+The program will be considered 1.0 status when all features are working
 and verified reasonably free of bugs.
