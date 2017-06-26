@@ -15,7 +15,7 @@ func Compile(s string) ([]byte, error) {
 	f, err := os.Open(s)
 	defer f.Close()
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	sc := bufio.NewScanner(f)
 

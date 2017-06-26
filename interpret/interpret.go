@@ -89,7 +89,6 @@ func Run(s []byte) {
 		switch s[ix] {
 		case 62: // >
 			t.right()
-			tools.Message(fmt.Sprintf("Move data pointer right to %v", t.index))
 		case 60: // <
 			t.left()
 		case 43: // +
@@ -140,14 +139,20 @@ func VRun(s []byte) {
 		switch s[ix] {
 		case 62: // >
 			t.right()
+			tools.Message(fmt.Sprintf("Move data pointer right to %v", t.index))
 		case 60: // <
 			t.left()
+			tools.Message(fmt.Sprintf("Move data pointer left to %v", t.index))
 		case 43: // +
 			t.up()
+			tools.Message(fmt.Sprintf("Incremented block %v to %v", t.index, t.array[t.index]))
 		case 45: // -
 			t.down()
+			tools.Message(fmt.Sprintf("Decremented block %v to %v", t.index, t.array[t.index]))
 		case 46: // .
+			tools.Message(fmt.Sprintf("Printing block %v, it is:", t.index))
 			t.out()
+			fmt.Println()
 		case 44: // ,
 			t.in()
 		case 91: // [
@@ -158,6 +163,7 @@ func VRun(s []byte) {
 						t.loopF++
 					} else if s[ix] == 93 {
 						if t.loopF == 0 {
+							tools.Message(fmt.Sprintf("Jumping ahead in the source to %v", ix))
 							break
 						}
 						t.loopF--
@@ -165,13 +171,14 @@ func VRun(s []byte) {
 				}
 			}
 		case 93: // ]
-			if t.array[t.index] > 0 {
+			if t.array[t.index] != 0 {
 				for {
 					ix--
 					if s[ix] == 93 {
 						t.loopB++
 					} else if s[ix] == 91 {
 						if t.loopB == 0 {
+							tools.Message(fmt.Sprintf("Jumping back in the source to %v", ix))
 							break
 						}
 						t.loopB--
