@@ -1,5 +1,5 @@
-# Brainfuck interpreter in Golang
-A brainfuck interpreter written in golang. Currently all basic features work.
+# BF interpreter in Golang
+A BF interpreter written in golang. Currently all basic features work.
 The source code file is interpreted by using the -f flag and the -v flag provides
 verbose output. Brackets are always checked for errors.
 
